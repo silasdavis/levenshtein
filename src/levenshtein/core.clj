@@ -16,7 +16,7 @@
                (inc (min
                      (first p) ;; i-1 j-1 substitution
                      (second p) ;; i-1 j deletion
-                     (last c)))))] ;; i j-1 insertion
+                     (c (count c)))))] ;; i j-1 insertion
     (recur [c [(inc (first c))]] [x y]))) ;; once we have reached the end of the row, flip the previous and current row and seed the new current row
 
 
