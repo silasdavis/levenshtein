@@ -26,21 +26,10 @@
                       [(vec (range 0 (inc (count u)))) [1]]
                       (for [y v x u] [x y])))))
 
-
+;; Note this is provided to examine the algorith, we do not produce an n x m matrix to find the edit distance above
 (defn edit-distance-matrix [u v]
   (let [[[first-row _] & intermediates] (take-nth (count u)
                                                   (reductions traverse
                                                               [(vec (range 0 (inc (count u)))) [1]]
                                                               (for [y v x u] [x y])))]
     (vec (cons first-row (map last intermediates)))))
-
-( (fn [u v]
-(reductions traverse
-            [(vec (range 0 (inc (count u)))) [1]]
-            (for [y v x u] [x y]))) "hamming" "distance")
-
-(count [1 2 3 4 5])
-
-(second '(1))
-
-(conj [12 3 4] 5)
