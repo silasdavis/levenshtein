@@ -9,7 +9,7 @@
 
   The second argument is the characters indexing the current matrix element."
   [[p c] [x y]]
-  (if (second p)
+  (if (second p) ;; If there is only 1 element in our previous row we have 'gone off the end' of the row
     [(rest p)
      (conj c (if (= x y)
                (first p)
