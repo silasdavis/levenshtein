@@ -9,14 +9,14 @@
 
   The second argument is the characters indexing the current matrix element."
   [[p c] [x y]]
-  (if (> (count p) 1)
+  (if (second p)
     [(rest p)
      (conj c (if (= x y)
                (first p)
                (inc (min
                      (first p) ;; i-1 j-1 substitution
                      (second p) ;; i-1 j deletion
-                     (last c)))))] ;; i j-1 insertion
+                     (c (dec (count c)))))))] ;; i j-1 insertion
     (recur [c [(inc (first c))]] [x y]))) ;; once we have reached the end of the row, flip the previous and current row and seed the new current row
 
 
@@ -33,3 +33,14 @@
                                                               [(vec (range 0 (inc (count u)))) [1]]
                                                               (for [y v x u] [x y])))]
     (vec (cons first-row (map last intermediates)))))
+
+( (fn [u v]
+(reductions traverse
+            [(vec (range 0 (inc (count u)))) [1]]
+            (for [y v x u] [x y]))) "hamming" "distance")
+
+(count [1 2 3 4 5])
+
+(second '(1))
+
+(conj [12 3 4] 5)

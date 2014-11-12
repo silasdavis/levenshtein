@@ -19,3 +19,10 @@
           [5 5 5 5 5 5 6 7 8 9 9 10]
           [6 6 6 6 6 5 6 7 8 9 10 9]
           [7 7 7 7 7 6 6 7 8 9 10 10]])))
+
+
+(def head (slurp "/home/silas/ephemera/sonnets-head.txt"))
+
+(def tail (slurp "/home/silas/ephemera/sonnets-tail.txt"))
+
+(edit-distance (take 1000 head) (take 1000 tail))
